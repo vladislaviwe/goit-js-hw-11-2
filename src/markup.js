@@ -1,5 +1,5 @@
-export default function cardMarkup(element) {
-  return `
+export default cardMarkup = (element) =>
+`
 <div class="photo-card">
   <a href="${element.largeImageURL}" class="gallery_link">
     <img class="photo-card_img" src="${element.webformatURL}" alt="${element.tags}" height="270px" loading="lazy" />
@@ -23,5 +23,4 @@ export default function cardMarkup(element) {
     </p>
   </div>
 </div>  
-`;
-}
+`
