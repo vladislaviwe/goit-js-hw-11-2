@@ -16,11 +16,15 @@ async function fetchImages(nameToSearch, page) {
         if (response.data.totalHits === 0) {
             Notiflix.Notify.failure("Sorry, there are no images matching your search query. Please try again.")
         }
-
-        onscroll = function(){
-            if(window.scrollY+1 >= document.documentElement.scrollHeight-document.documentElement.clientHeight && PER_PAGE * page >= response.data.totalHits && response.data.totalHits !== 0) 
-            Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
-        };
+        if (PER_PAGE * page >= response.data.totalHits && response.data.totalHits !== 0) {
+            setTimeout(() => {
+                Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
+            }, 3000);
+        }
+        // onscroll = function(){
+        //     if(window.scrollY+1 >= document.documentElement.scrollHeight-document.documentElement.clientHeight && PER_PAGE * page >= response.data.totalHits && response.data.totalHits !== 0) 
+        //     Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
+        // };
         
         return response.data.hits;
     } catch (error) {
