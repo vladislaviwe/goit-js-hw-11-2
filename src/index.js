@@ -2,7 +2,6 @@ import './css/styles.css';
 import API from './fetch-images';
 import getRefs from './getRefs';
 import MARKUP from './markup';
-import Notiflix from 'notiflix';
 import simpleLightbox from 'simplelightbox';
 import "simplelightbox/dist/simple-lightbox.min.css";
 
