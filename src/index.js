@@ -2,6 +2,7 @@ import './css/styles.css';
 import API from './fetch-images';
 import getRefs from './getRefs';
 import MARKUP from './markup';
+import Notiflix from 'notiflix';
 import simpleLightbox from 'simplelightbox';
 import "simplelightbox/dist/simple-lightbox.min.css";
 
@@ -61,7 +62,7 @@ function pageClearing() {
 } 
 
 function onFetch() {
-    API.fetchImages(nameToSearch, page)
+    API(nameToSearch, page)
     .then(images => {
         createMarkup(images);
         if (images.length === 39) {

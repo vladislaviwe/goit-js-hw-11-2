@@ -10,16 +10,16 @@ async function fetchImages(nameToSearch, page) {
     try {
         const response = await axios.get(`${BASE_URL}?key=${API_KEY}${OPTIONS}q=${nameToSearch}&page=${page}&per_page=${PER_PAGE}`);
 
+        if ( nameToSearch === "") {
+            Notiflix.Notify.failure("You have not entered search data!");
+            return;
+        }
         if (page === 1 && response.data.totalHits !== 0) {
             Notiflix.Notify.success(`Hoooray! We found ${response.data.totalHits} images!`);
         }
         if (response.data.totalHits === 0) {
             Notiflix.Notify.failure("Sorry, there are no images matching your search query. Please try again.")
         }
-        // onscroll = function(){
-        //     if(window.scrollY+1 >= document.documentElement.scrollHeight-document.documentElement.clientHeight && PER_PAGE * page >= response.data.totalHits && response.data.totalHits !== 0) 
-        //     Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
-        // };
         if (PER_PAGE * page >= response.data.totalHits && response.data.totalHits !== 0) {
             setTimeout(() => {
                 Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
@@ -33,4 +33,4 @@ async function fetchImages(nameToSearch, page) {
     }
 }
 
-export default { fetchImages };
+export default fetchImages;
