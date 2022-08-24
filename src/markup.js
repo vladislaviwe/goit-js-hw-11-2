@@ -1,4 +1,4 @@
-export default cardMarkup = (element) =>
+const cardMarkup = (element) =>
  `
 <div class="photo-card">
   <a href="${element.largeImageURL}" class="gallery_link">
@@ -23,4 +23,6 @@ export default cardMarkup = (element) =>
     </p>
   </div>
 </div>  
-`
+`;
+
+export default cardMarkup;
